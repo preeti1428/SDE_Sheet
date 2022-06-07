@@ -1,0 +1,38 @@
+#include <bits/stdc++.h> 
+
+long long int fact(int n){
+    if(n==0 || n==1)
+        return 1;
+    
+    return n*fact(n-1);
+}
+int uniquePaths(int m, int n) {
+	int targetx = m-1;
+    int targety = n-1;
+    
+    if(targetx==0 || targety==0)
+        return 1;
+    
+    long long sum = targetx+targety;
+    if(targetx>targety){
+        long long int fac = 1;
+        targetx+=1;
+        while(targetx<=sum){
+            fac*=(targetx);
+        targetx+=1;
+    }  
+        return (fac/(fact(targety)));
+    }
+    else{
+        long long int fac = 1;
+        
+        targety +=1;
+        while(targety<=(sum)){
+            fac*=(targety);
+            targety+=1;
+        }
+        
+        return (fac/(fact(targetx)));
+    }
+    
+};
