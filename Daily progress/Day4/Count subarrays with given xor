@@ -1,0 +1,20 @@
+#include <bits/stdc++.h> 
+int subarraysXor(vector<int> &arr, int x)
+{
+    unordered_map<int,int>m;
+    
+    int p = x;
+    int ct=0;
+    
+    for(int i=0;i<arr.size();i++){
+        p= p^arr[i];
+        
+        if(p==0)
+        ct++;
+        if(m.find(x^p)!=m.end());
+        ct= ct+m[x^p];
+        
+        m[p]++;
+    }
+    return ct;
+}
