@@ -1,0 +1,15 @@
+#include <bits/stdc++.h> 
+using namespace std;
+
+long long maxSubarraySum(int arr[], int n)
+{
+    long long res=arr[0];
+    long long maxending=arr[0];
+    
+    for(int i=1; i<n;i++){
+       
+        maxending = (maxending+arr[i])>arr[i]?(maxending+arr[i]):arr[i];
+        res = res>maxending?res:maxending;
+    }
+   return res>0?res:0;
+}
