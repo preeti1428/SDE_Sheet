@@ -1,0 +1,20 @@
+//Not an efficient approach, will update later
+
+#include <bits/stdc++.h> 
+vector<int> majorityElementII(vector<int> &arr)
+{
+    vector<int>ans;
+    
+    unordered_map<int,int>map;
+    
+    for(int i=0; i<arr.size();i++)
+        map[arr[i]]++;
+    
+    int threshold = (int)(floor)(arr.size()/3.00);
+    
+    for(auto x:map){
+        if(x.second>threshold)
+            ans.push_back(x.first);
+    }
+    return ans;
+}
