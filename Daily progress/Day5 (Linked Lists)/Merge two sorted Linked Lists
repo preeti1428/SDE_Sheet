@@ -1,0 +1,71 @@
+#include <bits/stdc++.h> 
+/************************************************************
+
+    Following is the linked list node structure.
+    
+    template <typename T>
+    class Node {
+        public:
+        T data;
+        Node* next;
+
+        Node(T data) {
+            next = NULL;
+            this->data = data;
+        }
+
+        ~Node() {
+            if (next != NULL) {
+                delete next;
+            }
+        }
+    };
+
+************************************************************/
+
+Node<int>* sortTwoLists(Node<int>* first, Node<int>* second)
+{
+    if(first==NULL)
+        return second;
+    if(second==NULL)
+        return first;
+    
+    Node<int>* newhead = new Node<int>(1);
+    Node<int>* curr = newhead;
+    
+    Node<int>* i = first;
+    Node<int>* j= second;
+    
+    while(i!=NULL && j!=NULL ){
+        if(i->data<(j->data)){
+            curr->data = i->data;
+            i= i->next;
+        }
+        else{
+            curr->data = j->data;
+            j=j->next;
+        }
+        curr->next = new Node<int>(1);
+        curr = curr->next;
+    }
+   
+    while(i!=NULL){  
+        curr->data = i->data;
+        i=i->next;
+        if(i!=NULL){
+        curr->next = new Node<int>(1);
+        curr = curr->next;
+        }
+    }
+    
+    while(j!=NULL){
+        curr->data = j->data;
+        j=j->next;
+        if(j!=NULL){
+        curr->next = new Node<int>(1);
+        curr = curr->next;
+        }
+    }
+   
+    return newhead;
+}
