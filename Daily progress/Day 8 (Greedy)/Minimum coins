@@ -1,0 +1,15 @@
+int findMinimumCoins(int amount) 
+{
+    int denom[9] = {1, 2, 5, 10, 20, 50, 100, 500, 1000};
+    
+    int coin = 0;
+    int i=8;
+    while(amount>0){
+        while(amount<denom[i])
+            i--;
+        
+        coin+= amount/denom[i];
+        amount= amount - (amount/denom[i])*denom[i];
+    }
+    return coin;
+}
