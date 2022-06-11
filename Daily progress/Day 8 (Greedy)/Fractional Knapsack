@@ -1,0 +1,29 @@
+#include <algorithm>
+bool mycmp(pair<int,int>&a, pair<int,int>&b){
+    double av = (a.second/(double)a.first);
+    double bv = (b.second/(double)b.first);
+    
+    return av>bv;
+}
+
+double maximumValue (vector<pair<int, int>>& items, int n, int w)
+{
+    // Write your code here.
+    // ITEMS contains {weight, value} pairs.
+    sort(items.begin(),items.end(),mycmp);
+    
+    double res =0;
+    
+    for(int i=0; i<n;i++){
+        if(w>=items[i].first){
+            w= w- items[i].first;
+            res+=items[i].second;
+        }
+        else{
+            res = res + w*((double)items[i].second/((double)items[i].first));
+            break;
+        }
+    }
+    return res;
+    
+}
