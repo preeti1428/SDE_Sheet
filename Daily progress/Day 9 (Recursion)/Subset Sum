@@ -1,0 +1,21 @@
+void solve(vector<int>&ans, int sum, vector<int>num){
+  if(num.size()==0){
+      ans.push_back(sum);
+      return;
+  }
+    int sum1=sum;
+    int sum2=sum;
+    sum2+=num[num.size()-1];
+    num.pop_back();
+    solve(ans, sum2, num);
+    solve(ans, sum1, num);
+}
+
+vector<int> subsetSum(vector<int> &num)
+{
+   vector<int>ans;
+    int sum=0;
+    solve(ans, sum, num);
+    sort(ans.begin(),ans.end());
+    return ans;
+}
