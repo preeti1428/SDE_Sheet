@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool ismatch(char a, char b){
+    return (a=='(' && b==')')||(a=='{' && b=='}') || (a=='[' && b==']');
+}
+bool isValidParenthesis(string ex)
+{
+   stack<int>s;
+    
+    int i=0;
+    
+    while(i<ex.size()){
+        if(ex[i]=='(' || ex[i]=='{' || ex[i]=='[')
+            s.push(ex[i]);
+        else{
+            if(s.empty())
+                return false;
+            
+            if(ismatch(s.top(),ex[i]))
+                s.pop();
+            else
+                return false;
+        }
+        i++;
+    }
+    if(s.empty())
+        return true;
+    else
+        return false;
+    
+}
